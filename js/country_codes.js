@@ -20,7 +20,7 @@ function get_country_codes(lo,la) {
          for (let i = 0; i < fLen; i++) {
            if (i < 1) {
              $(".select_currency").html(countries[i].cname);
-             $(".mcode").html(countries[i].cname);
+             $(".mcode").html(countries[i].mcode);
              localStorage.setItem("mcode", countries[i].mcode);
              localStorage.setItem("ccode", countries[i].ccode);
              localStorage.setItem("exrate", countries[i].exrate);
@@ -29,7 +29,7 @@ function get_country_codes(lo,la) {
              //1 USD = 113.55 KES
              //113.55 KES = 1 USD
              // 1 KES = ? USD => 1/113.55 USD
-             
+
 
              var curre = '<li><a class="dropdown-item active currency_option" cname="' + countries[i].cname + '" mcode="' + countries[i].mcode + '" exchange_rate="' + countries[i].exrate + '" ccode="' + countries[i].ccode + '" currency_name="' + countries[i].ccode + '" country_name="' + countries[i].name + '" href="#">' + countries[i].cname + '</a></li>' +
                          '<li><hr class="dropdown-divider"></li>';

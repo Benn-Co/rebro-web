@@ -133,7 +133,7 @@ $("body").delegate(".currency_option","click",function(event){
     event.preventDefault();
     $(".select_currency").html($(this).attr('cname'));
     $(".select_country").html($(this).attr('country_name')); 
-    $(".mcode").html($(this).attr('cname'));
+    $(".mcode").html($(this).attr('mcode'));
     localStorage.setItem("cname", $(this).attr('cname'));
     localStorage.setItem("mcode", $(this).attr('mcode'));
     localStorage.setItem("ccode", $(this).attr('ccode'));
@@ -145,7 +145,7 @@ $("body").delegate(".country_option","click",function(event){
     event.preventDefault();
     $(".select_country").html($(this).attr('country_name')); 
     $(".select_currency").html($(this).attr('cname'));
-    $(".mcode").html($(this).attr('cname'));
+    $(".mcode").html($(this).attr('mcode'));
     localStorage.setItem("mcode", $(this).attr('mcode'));
     localStorage.setItem("ccode", $(this).attr('ccode'));
     localStorage.setItem("exrate", $(this).attr('exrate'));

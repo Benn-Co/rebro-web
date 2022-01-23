@@ -9,7 +9,10 @@ function get_country_codes(lo,la) {
     url: api_server_url + '/cordova/get_country_codes.php',
     success: function searchSuccess(response) {
       try {
-         let countries =response.countries;         
+         let countries =response.countries;   
+         let ccode =response.ccode; 
+         alert(ccode);        
+      
          let fLen = countries.length;
          
          for (let i = 0; i < fLen; i++) {

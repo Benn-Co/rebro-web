@@ -1,8 +1,7 @@
 let lo = '';
 let la = '';
 var api_server_url = localStorage.getItem("api_server_url");
-alert('ccode');        
-
+//alert('ccode');
 get_country_codes(lo,la);
 function get_country_codes(lo,la) {
   $.ajax({
@@ -17,7 +16,7 @@ function get_country_codes(lo,la) {
          let ccode =response.ccode; 
          alert(ccode);        
       
-         let fLen = countries.length;
+         /**let fLen = countries.length;
          
          for (let i = 0; i < fLen; i++) {
            if (i < 1) {
@@ -50,7 +49,7 @@ function get_country_codes(lo,la) {
                            $(".country_list").append(country);
            }
                             
-         }
+         } */
       } catch (error) {
         alert(error);
       }

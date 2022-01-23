@@ -134,6 +134,7 @@ $("body").delegate(".currency_option","click",function(event){
     $(".mcode").html($(this).attr('mcode'));
     localStorage.setItem("mcode", $(this).attr('mcode'));
     localStorage.setItem("ccode", $(this).attr('ccode'));
+    localStorage.setItem("exrate", $(this).attr('exrate'));
 
     //alert($(this).attr('mcode'));
 });
@@ -144,6 +145,7 @@ $("body").delegate(".country_option","click",function(event){
     $(".mcode").html($(this).attr('mcode'));
     localStorage.setItem("mcode", $(this).attr('mcode'));
     localStorage.setItem("ccode", $(this).attr('ccode'));
+    localStorage.setItem("exrate", $(this).attr('exrate'));
 
     //alert($(this).attr('mcode'));
 
@@ -317,8 +319,12 @@ $(".complete_trasaction").click(function(){
                 $(".complete_trasaction").addClass("btn-warning");
                 $(".complete_trasaction").html("Proccessing..."); 
 
-                var intent = $(this).attr("intenti");
-                proccess_transaction(localStorage.getItem("ccode"),amount_to_deposit,selected_payment_option,proccessing_number,intent);               
+                if (amount_to_deposit == "" || amount_to_deposit < 1) {
+                    mysnackbar("Enter valid amount");
+                } else {
+                    var intent = $(this).attr("intenti");
+                    proccess_transaction(localStorage.getItem("ccode"),amount_to_deposit,selected_payment_option,proccessing_number,intent);               
+                }
             }
         } else {
             $(".entrer_phoner").hide();

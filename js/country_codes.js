@@ -1,7 +1,7 @@
 let lo = '';
 let la = '';
 var api_server_url = localStorage.getItem("api_server_url");
-
+get_country_codes(lo,la);
 function get_country_codes(lo,la) {
   $.ajax({
     type: "POST", // Type of request to be send, called as 

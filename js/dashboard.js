@@ -322,6 +322,7 @@ $(".complete_trasaction").click(function(){
                 if (amount_to_deposit == "" || amount_to_deposit < 1) {
                     mysnackbar("Enter valid amount");
                 } else {
+                    alert(amount_to_deposit);
                     var intent = $(this).attr("intenti");
                     proccess_transaction(localStorage.getItem("ccode"),amount_to_deposit,selected_payment_option,proccessing_number,intent);               
                 }

@@ -1,6 +1,8 @@
 let lo = '';
 let la = '';
 var api_server_url = localStorage.getItem("api_server_url");
+alert('ccode');        
+
 get_country_codes(lo,la);
 function get_country_codes(lo,la) {
   $.ajax({

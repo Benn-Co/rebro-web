@@ -133,7 +133,8 @@ $("body").delegate(".currency_option","click",function(event){
     event.preventDefault();
     $(".select_currency").html($(this).attr('currency_name'));
     $(".select_country").html($(this).attr('country_name')); 
-    $(".mcode").html($(this).attr('mcode'));
+    $(".mcode").html($(this).attr('cname'));
+    localStorage.setItem("cname", $(this).attr('cname'));
     localStorage.setItem("mcode", $(this).attr('mcode'));
     localStorage.setItem("ccode", $(this).attr('ccode'));
     localStorage.setItem("exrate", $(this).attr('exrate'));
@@ -144,10 +145,11 @@ $("body").delegate(".country_option","click",function(event){
     event.preventDefault();
     $(".select_country").html($(this).attr('country_name')); 
     $(".select_currency").html($(this).attr('ccode'));
-    $(".mcode").html($(this).attr('mcode'));
+    $(".mcode").html($(this).attr('cname'));
     localStorage.setItem("mcode", $(this).attr('mcode'));
     localStorage.setItem("ccode", $(this).attr('ccode'));
     localStorage.setItem("exrate", $(this).attr('exrate'));
+    localStorage.setItem("cname", $(this).attr('cname'));
 
     //alert($(this).attr('mcode'));
 
@@ -328,7 +330,7 @@ $(".complete_trasaction").click(function(){
                     $(".complete_trasaction").addClass("btn-warning");
                     $(".complete_trasaction").html("Proccessing...");
                     var intent = $(this).attr("intenti");
-                    proccess_transaction(localStorage.getItem("ccode"),amount_to_deposit,selected_payment_option,proccessing_number,intent);               
+                    proccess_transaction(localStorage.getItem("cname"),amount_to_deposit,selected_payment_option,proccessing_number,intent);               
                 }
             }
         } else {

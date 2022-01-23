@@ -1,4 +1,6 @@
 var mkt_option_clicked = 0;
+var api_server_url = localStorage.getItem("api_server_url");
+
 $("body").delegate(".mkt_option","click",function(event){
     event.preventDefault();
     //alert("https://8080-f0ab28f8-b99f-4f67-a63a-122172b1b1a4.cs-europe-west1-onse.cloudshell.dev/?authuser=0");
@@ -423,12 +425,12 @@ function send_gift_email(gift_email,username) {
                     mysnackbar(response.signup_email + " or " + response.signup_password);
                 }
             } catch(e) {
-                mysnackbar('JSON parsing error');
+                //mysnackbar('JSON parsing error');
             }          
         },
         error: function searchError(xhr, err) {
           //$('#app-cover-spin').hide(0);
-          mysnackbar("Error on ajax call: " + err  + " " + JSON.stringify(xhr));
+          //mysnackbar("Error on ajax call: " + err  + " " + JSON.stringify(xhr));
         }
     });
 }
@@ -1116,4 +1118,3 @@ function mysnackbar(text) {
     // After 3 seconds, remove the show class from DIV
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 }
- 

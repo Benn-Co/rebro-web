@@ -319,14 +319,12 @@ $(".complete_trasaction").click(function(){
                     proccessing_number = proccessing_number.replace("+", "");
                 }
 
-                $(".complete_trasaction").removeClass("btn-primary");
-                $(".complete_trasaction").addClass("btn-warning");
-                $(".complete_trasaction").html("Proccessing..."); 
-
                 if (amount_to_deposit == "" || amount_to_deposit < 1) {
                     mysnackbar("Enter valid amount");
                 } else {
-                    //alert(amount_to_deposit);
+                    $(".complete_trasaction").removeClass("btn-primary");
+                    $(".complete_trasaction").addClass("btn-warning");
+                    $(".complete_trasaction").html("Proccessing...");
                     var intent = $(this).attr("intenti");
                     proccess_transaction(localStorage.getItem("ccode"),amount_to_deposit,selected_payment_option,proccessing_number,intent);               
                 }

@@ -235,6 +235,8 @@ $(".complete_trasaction").click(function(){
                 $(".amount_to_withdraw").addClass("is-invalid");
                 $(".amount_to_withdraw_feedback").addClass("invalid-feedback");
                 $(".amount_to_withdraw_feedback").html("Please provide a valid amount.");
+                var amount_to_deposit =0;
+
             } else {
                 $(".amount_to_withdraw").removeClass("is-invalid");
                 $(".amount_to_withdraw_feedback").removeClass("invalid-feedback");
@@ -250,6 +252,8 @@ $(".complete_trasaction").click(function(){
                 $(".amount_to_deposit").addClass("is-invalid");
                 $(".amount_to_deposit_feedback").addClass("invalid-feedback");
                 $(".amount_to_deposit_feedback").html("Please provide a valid amount.");
+                var amount_to_deposit =0;
+
             } else {
                 $(".amount_to_deposit").removeClass("is-invalid");
                 $(".amount_to_deposit_feedback").removeClass("invalid-feedback");
@@ -322,7 +326,7 @@ $(".complete_trasaction").click(function(){
                 if (amount_to_deposit == "" || amount_to_deposit < 1) {
                     mysnackbar("Enter valid amount");
                 } else {
-                    alert(amount_to_deposit);
+                    //alert(amount_to_deposit);
                     var intent = $(this).attr("intenti");
                     proccess_transaction(localStorage.getItem("ccode"),amount_to_deposit,selected_payment_option,proccessing_number,intent);               
                 }

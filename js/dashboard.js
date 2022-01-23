@@ -752,7 +752,7 @@ function bybit_mkt(crypto,asset,aisa_options) {
                                 let letpotential_usd_account_balance = Number(potential_account_balance) + Number(USD_balance);
 
                                 potential_usd_account_balance = letpotential_usd_account_balance.toFixed(2);
-                                $(".account_balance").html("$" + potential_usd_account_balance);
+                                $(".account_balance").html(localStorage.getItem("ccode") + " " + potential_usd_account_balance);
 
                                 
                                 if (localStorage.getItem("asset") === results[i].symbol) {

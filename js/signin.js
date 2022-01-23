@@ -131,7 +131,8 @@ function login_user(login_email,login_password,login_details_username,login_deta
 
                     var account_balance = response.account_balance;
                     $(".account_balance").attr("account_balance",account_balance);
-                    $(".account_balance").html("$" + account_balance);
+                    $(".account_balance").html(localStorage.getItem("ccode") + " " + account_balance);
+
                     localStorage.setItem("account_balance", account_balance);
 
                     localStorage.setItem("username_pic", username_pic);

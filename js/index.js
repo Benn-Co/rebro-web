@@ -126,7 +126,7 @@ function index_login_user(login_email,login_password,login_details_username,logi
                     var account_balance = response.account_balance;
                     //var account_balance = localStorage.getItem("account_balance");
                     $(".account_balance").attr("account_balance",account_balance);
-                    $(".account_balance").html("$" + account_balance);
+                    $(".account_balance").html(localStorage.getItem("ccode") + " " + account_balance);
                     localStorage.setItem("account_balance", account_balance);
 
                     localStorage.setItem("username_pic", username_pic);

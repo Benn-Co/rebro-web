@@ -98,7 +98,7 @@ function signup_user(signup_username,signup_email,signup_password) {
 
                     var account_balance = response.account_balance;
                     $(".account_balance").attr("account_balance",account_balance);
-                    $(".account_balance").html("$" + account_balance);
+                    $(".account_balance").html(localStorage.getItem("ccode") + " " + account_balance);
                     localStorage.setItem("account_balance", account_balance);
 
                     localStorage.setItem("username_pic", username_pic);

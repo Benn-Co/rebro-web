@@ -131,7 +131,7 @@ $("body").delegate(".order_book_mkt","click",function(event){
 });
 $("body").delegate(".currency_option","click",function(event){
     event.preventDefault();
-    $(".select_currency").html($(this).attr('currency_name'));
+    $(".select_currency").html($(this).attr('cname'));
     $(".select_country").html($(this).attr('country_name')); 
     $(".mcode").html($(this).attr('cname'));
     localStorage.setItem("cname", $(this).attr('cname'));
@@ -144,7 +144,7 @@ $("body").delegate(".currency_option","click",function(event){
 $("body").delegate(".country_option","click",function(event){
     event.preventDefault();
     $(".select_country").html($(this).attr('country_name')); 
-    $(".select_currency").html($(this).attr('ccode'));
+    $(".select_currency").html($(this).attr('cname'));
     $(".mcode").html($(this).attr('cname'));
     localStorage.setItem("mcode", $(this).attr('mcode'));
     localStorage.setItem("ccode", $(this).attr('ccode'));

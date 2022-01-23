@@ -600,7 +600,6 @@ function bybit_mkt(crypto,asset,aisa_options) {
                         var potential_usd_account_balance = localStorage.getItem("account_balance");
 
                         for (let i = 0; i < results.length; i++) {
-                            //results[i].open
                             let symbol_pre_price = localStorage.getItem("" + results[i].symbol + "");// Get Symbol preveous price
                             if (symbol_pre_price != '' || symbol_pre_price != null) {
                                 let price_now = results[i].last_price;
@@ -688,7 +687,7 @@ function bybit_mkt(crypto,asset,aisa_options) {
                                 '<a href="#' + results[i].symbol + '">' + results[i].symbol + '</a>' +
                                 '</span>' +
                                 '<span class="text-' + wacthlist_prct_bg + '">' + wacthlist_prct + '%</span>' +
-                                '<span class="text-info">$'+ results[i].last_price + '</span>' +
+                                '<span class="text-info">' + localStorage.getItem("ccode") + ' ' + results[i].last_price + '</span>' +
                                 '<span class="dropdown ms-5">' +
                                 '<a class="icon text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">' +
                                 '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>' +
@@ -728,12 +727,11 @@ function bybit_mkt(crypto,asset,aisa_options) {
                                 var aria_valuenow = Math.abs(pert_chang);
 
                                 var mysnaccountackbar = " BTC " + BTC_balance + " " + results[i].symbol + " balance " + USD_balance + "  value added " + coin_value + " change " + pert_chang + "%";
-                                
+
 
                                 
 
                                 var progres_dash = '<div class="progress">' +
-                                //'<div class="progress-bar ' + pr_bg + '" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="25">25%</div>' + 
                                 '<div class="progress-bar ' + pr_bg + '" role="progressbar" style="width: ' + aria_valuenow + '%;" aria-valuenow="' + aria_valuenow + '" aria-valuemin="0" aria-valuemax="100">' + aria_valuenow + '%</div>' + 
                                 '</div>';
 
@@ -757,8 +755,8 @@ function bybit_mkt(crypto,asset,aisa_options) {
                                 '</svg>' +
                                 '<a href="#' + results[i].symbol + '">' + results[i].symbol + '</a>' +
                                 '</span>' +
-                                '<span class="text-success">$' + USD_balance + '</span>' +
-                                '<span class="text-info">$'+ results[i].last_price + '</span>' +
+                                '<span class="text-success">' + localStorage.getItem("ccode") + ' ' + USD_balance + '</span>' +
+                                '<span class="text-info">' + localStorage.getItem("ccode") + ' '+ results[i].last_price + '</span>' +
                                 '<span class="dropdown ms-5">' +
                                 '<a class="icon text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="' + aria_expanded + '">' +
                                 '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>' +

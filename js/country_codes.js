@@ -1,7 +1,6 @@
 let lo = '';
 let la = '';
 var api_server_url = localStorage.getItem("api_server_url");
-//alert('ccode');
 get_country_codes(lo,la);
 function get_country_codes(lo,la) {
   $.ajax({
@@ -14,7 +13,7 @@ function get_country_codes(lo,la) {
       try {
          let countries =response.countries;   
          let ccode =response.ccode; 
-         alert(ccode);        
+         alert(countries.length);        
       
          /**let fLen = countries.length;
          

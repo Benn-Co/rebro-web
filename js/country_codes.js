@@ -19,14 +19,14 @@ function get_country_codes(lo,la) {
          
          for (let i = 0; i < fLen; i++) {
            if (i < 1) {
-             $(".select_currency").html(countries[i].ccode);
+             $(".select_currency").html(countries[i].cname);
              $(".mcode").html(countries[i].cname);
              localStorage.setItem("mcode", countries[i].mcode);
              localStorage.setItem("ccode", countries[i].ccode);
              localStorage.setItem("exrate", countries[i].exrate);
              localStorage.setItem("cname", countries[i].cname);
 
-             var curre = '<li><a class="dropdown-item active currency_option" cname="' + countries[i].cname + '" mcode="' + countries[i].mcode + '" exchange_rate="' + countries[i].exrate + '" ccode="' + countries[i].ccode + '" currency_name="' + countries[i].ccode + '" country_name="' + countries[i].name + '" href="#">' + countries[i].ccode + '</a></li>' +
+             var curre = '<li><a class="dropdown-item active currency_option" cname="' + countries[i].cname + '" mcode="' + countries[i].mcode + '" exchange_rate="' + countries[i].exrate + '" ccode="' + countries[i].ccode + '" currency_name="' + countries[i].ccode + '" country_name="' + countries[i].name + '" href="#">' + countries[i].cname + '</a></li>' +
                          '<li><hr class="dropdown-divider"></li>';
                          $(".currency_list").append(curre);
                          
@@ -38,7 +38,7 @@ function get_country_codes(lo,la) {
                            '<li><hr class="dropdown-divider"></li>';
                            $(".country_list").append(country);            
            }else{
-             var curre = '<li><a class="dropdown-item currency_option" cname="' + countries[i].cname + '" mcode="' + countries[i].mcode + '" exchange_rate="' + countries[i].exrate + '" ccode="' + countries[i].ccode + '" currency_name="' + countries[i].ccode + '" country_name="' + countries[i].name + '" href="#">' + countries[i].ccode + '</a></li>' +
+             var curre = '<li><a class="dropdown-item currency_option" cname="' + countries[i].cname + '" mcode="' + countries[i].mcode + '" exchange_rate="' + countries[i].exrate + '" ccode="' + countries[i].ccode + '" currency_name="' + countries[i].ccode + '" country_name="' + countries[i].name + '" href="#">' + countries[i].cname + '</a></li>' +
                          '<li><hr class="dropdown-divider"></li>';
                          $(".currency_list").append(curre);
              var mcode_list = '<li><a class="dropdown-item currency_option" cname="' + countries[i].cname + '" mcode="' + countries[i].mcode + '" exchange_rate="' + countries[i].exrate + '" ccode="' + countries[i].ccode + '" currency_name="' + countries[i].ccode + '" country_name="' + countries[i].name + '" href="#">' + countries[i].mcode + '</a></li>';

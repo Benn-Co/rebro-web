@@ -675,7 +675,7 @@ function bybit_mkt(crypto,asset,aisa_options) {
                             '</a>' + */
                             '</li>' +
                             '<li class="nav-item ">' +
-                            '<a class="nav-link" href="#">$'+ results[i].last_price + ' </a>' +
+                            '<a class="nav-link" href="#">' + localStorage.getItem("ccode") + ' '+ results[i].last_price + ' </a>' +
                             '</li>' +
                             '<li class="nav-item d-none d-lg-block d-md-block">' +
                             '<span class="badge ' + chan_pri_bg + '">'+ chan_pri + '%</span>' +

@@ -10,11 +10,8 @@ function get_country_codes(lo,la) {
     processData: true,
     url: api_server_url + '/cordova/get_country_codes.php',
     success: function searchSuccess(response) {
-      try {        
-         //alert(response.countries[0].cname);
-
+      try { 
          let countries = response.countries;
-
          let fLen = countries.length;
          
          for (let i = 0; i < fLen; i++) {
@@ -52,8 +49,7 @@ function get_country_codes(lo,la) {
              var country = '<li><a class="dropdown-item active country_option" cname="' + countries[i].cname + '" mcode="' + countries[i].mcode + '" exchange_rate="' + countries[i].exrate + '" ccode="' + countries[i].ccode + '" currency_name="' + countries[i].ccode + '" country_name="' + countries[i].name + '" href="#">' + countries[i].name + '</a></li>' +
                            '<li><hr class="dropdown-divider"></li>';
                            $(".country_list").append(country);
-           }
-                            
+           }                            
          }
       } catch (error) {
         //alert(error);

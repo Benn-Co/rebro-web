@@ -65,7 +65,7 @@ function onDeviceReady() {
         $(".user_email").html(localStorage.getItem("user_email"));
         $(".user_phone").html(localStorage.getItem("user_phone"));
         localStorage.setItem("account_balance",0);//BTC
-        $(".account_balance").html(localStorage.getItem("account_balance"));
+        $(".account_balance").html(localStorage.getItem("ccode") + " " + localStorage.getItem("account_balance"));
 
     } else if (user_pass == null || user_pass == '') {
         $("#pills-account-tab").removeClass("d-none");
@@ -78,7 +78,7 @@ function onDeviceReady() {
         $(".user_email").html(localStorage.getItem("user_email"));
         $(".user_phone").html(localStorage.getItem("user_phone"));
         localStorage.setItem("account_balance",0);//BTC
-        $(".account_balance").html(localStorage.getItem("account_balance"));
+        $(".account_balance").html(localStorage.getItem("ccode") + " " + localStorage.getItem("account_balance"));
 
     } else {        
         $("#pills-account-tab").addClass("d-none");

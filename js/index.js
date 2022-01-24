@@ -52,6 +52,8 @@ var IMAGE_url_path_name = 'https://'  + api_server_url + '/product_images/';
 var user_permited = 0;
 function onDeviceReady() {
     // Cordova is now initialized. Have fun!  
+    localStorage.setItem("ccode", '$');
+    localStorage.setItem("exrate", 1);
     username = localStorage.getItem("username");
     var email = localStorage.getItem("email");
     var user_pass = localStorage.getItem("user_pass");
@@ -65,6 +67,8 @@ function onDeviceReady() {
         $(".user_email").html(localStorage.getItem("user_email"));
         $(".user_phone").html(localStorage.getItem("user_phone"));
         //localStorage.setItem("account_balance",0);//BTC
+        localStorage.setItem("ccode", '$');
+        localStorage.setItem("exrate", 1);
         var usd_account_balance = 0;
         localStorage.setItem("usd_account_balance", usd_account_balance);
 
@@ -91,6 +95,8 @@ function onDeviceReady() {
         $(".user_email").html(localStorage.getItem("user_email"));
         $(".user_phone").html(localStorage.getItem("user_phone"));
         //localStorage.setItem("account_balance",0);//BTC
+        localStorage.setItem("ccode", '$');
+        localStorage.setItem("exrate", 1);
         var usd_account_balance = 0;
         localStorage.setItem("usd_account_balance", usd_account_balance);
 
@@ -115,9 +121,6 @@ function onDeviceReady() {
             index_login_user(email,user_pass,username,email);
         }
     }
-    localStorage.setItem("ccode", '$');
-    localStorage.setItem("exrate", 1);
-             
     bybit_mkt('Query Symbol','','');        
 }
 function index_login_user(login_email,login_password,login_details_username,login_details_email) {

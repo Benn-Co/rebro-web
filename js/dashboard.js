@@ -138,6 +138,13 @@ $("body").delegate(".currency_option","click",function(event){
     localStorage.setItem("mcode", $(this).attr('mcode'));
     localStorage.setItem("ccode", $(this).attr('ccode'));
     localStorage.setItem("exrate", $(this).attr('exchange_rate'));
+    var account_balance = Number(localStorage.getItem("usd_account_balance"))*Number(localStorage.getItem("exrate"));
+    if (account_balance.toFixed(2) < 1) {
+        account_balance = account_balance.toFixed(4);
+    } else {
+        account_balance = account_balance.toFixed(2);                            
+    }
+    localStorage.setItem("account_balance", account_balance);
 
 });
 $("body").delegate(".country_option","click",function(event){
@@ -149,6 +156,14 @@ $("body").delegate(".country_option","click",function(event){
     localStorage.setItem("ccode", $(this).attr('ccode'));
     localStorage.setItem("exrate", $(this).attr('exchange_rate'));
     localStorage.setItem("cname", $(this).attr('cname'));
+    var account_balance = Number(localStorage.getItem("usd_account_balance"))*Number(localStorage.getItem("exrate"));
+    if (account_balance.toFixed(2) < 1) {
+        account_balance = account_balance.toFixed(4);
+    } else {
+        account_balance = account_balance.toFixed(2);                            
+    }
+    localStorage.setItem("account_balance", account_balance);
+
 
 });
 $(".query_symbols").hover(function(){

@@ -123,7 +123,15 @@ function index_login_user(login_email,login_password,login_details_username,logi
                     localStorage.setItem("email", email);
                     localStorage.setItem("user_pass", user_pass);
 
-                    var account_balance = response.account_balance;
+                    var usd_account_balance = response.account_balance;
+                    localStorage.setItem("usd_account_balance", usd_account_balance);
+ 
+                    var account_balance = Number(localStorage.getItem("usd_account_balance"))*Number(localStorage.getItem("exrate"));
+                    if (account_balance.toFixed(2) < 1) {
+                        account_balance = account_balance.toFixed(4);
+                    } else {
+                        account_balance = account_balance.toFixed(2);                            
+                    }
                     //var account_balance = localStorage.getItem("account_balance");
                     $(".account_balance").attr("account_balance",account_balance);
                     $(".account_balance").html(localStorage.getItem("ccode") + " " + account_balance);

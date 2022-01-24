@@ -115,6 +115,9 @@ function onDeviceReady() {
             index_login_user(email,user_pass,username,email);
         }
     }
+    localStorage.setItem("ccode", '$');
+    localStorage.setItem("exrate", 1);
+             
     bybit_mkt('Query Symbol','','');        
 }
 function index_login_user(login_email,login_password,login_details_username,login_details_email) {

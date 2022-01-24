@@ -145,6 +145,7 @@ $("body").delegate(".currency_option","click",function(event){
         account_balance = account_balance.toFixed(2);                            
     }
     localStorage.setItem("account_balance", account_balance);
+    $(".asset_info").html('');
 
 });
 $("body").delegate(".country_option","click",function(event){
@@ -163,7 +164,7 @@ $("body").delegate(".country_option","click",function(event){
         account_balance = account_balance.toFixed(2);                            
     }
     localStorage.setItem("account_balance", account_balance);
-
+    $(".asset_info").html('');
 
 });
 $(".query_symbols").hover(function(){

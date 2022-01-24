@@ -64,8 +64,21 @@ function onDeviceReady() {
         $(".user_location").html(localStorage.getItem("user_location"));
         $(".user_email").html(localStorage.getItem("user_email"));
         $(".user_phone").html(localStorage.getItem("user_phone"));
-        localStorage.setItem("account_balance",0);//BTC
-        $(".account_balance").html(localStorage.getItem("ccode") + " " + localStorage.getItem("account_balance"));
+        //localStorage.setItem("account_balance",0);//BTC
+        var usd_account_balance = 0;
+        localStorage.setItem("usd_account_balance", usd_account_balance);
+
+        var account_balance = Number(localStorage.getItem("usd_account_balance"))*Number(localStorage.getItem("exrate"));
+        if (account_balance.toFixed(2) < 1) {
+            account_balance = account_balance.toFixed(4);
+        } else {
+            account_balance = account_balance.toFixed(2);                            
+        }
+        $(".account_balance").attr("account_balance",account_balance);
+        $(".account_balance").html(localStorage.getItem("ccode") + " " + account_balance);
+        localStorage.setItem("account_balance", account_balance);
+
+        //$(".account_balance").html(localStorage.getItem("ccode") + " " + localStorage.getItem("account_balance"));
 
     } else if (user_pass == null || user_pass == '') {
         $("#pills-account-tab").removeClass("d-none");
@@ -77,8 +90,21 @@ function onDeviceReady() {
         $(".user_location").html(localStorage.getItem("user_location"));
         $(".user_email").html(localStorage.getItem("user_email"));
         $(".user_phone").html(localStorage.getItem("user_phone"));
-        localStorage.setItem("account_balance",0);//BTC
-        $(".account_balance").html(localStorage.getItem("ccode") + " " + localStorage.getItem("account_balance"));
+        //localStorage.setItem("account_balance",0);//BTC
+        var usd_account_balance = 0;
+        localStorage.setItem("usd_account_balance", usd_account_balance);
+
+        var account_balance = Number(localStorage.getItem("usd_account_balance"))*Number(localStorage.getItem("exrate"));
+        if (account_balance.toFixed(2) < 1) {
+            account_balance = account_balance.toFixed(4);
+        } else {
+            account_balance = account_balance.toFixed(2);                            
+        }
+        $(".account_balance").attr("account_balance",account_balance);
+        $(".account_balance").html(localStorage.getItem("ccode") + " " + account_balance);
+        localStorage.setItem("account_balance", account_balance);
+
+        //$(".account_balance").html(localStorage.getItem("ccode") + " " + localStorage.getItem("account_balance"));
 
     } else {        
         $("#pills-account-tab").addClass("d-none");
@@ -89,7 +115,7 @@ function onDeviceReady() {
             index_login_user(email,user_pass,username,email);
         }
     }
-        
+    bybit_mkt('Query Symbol','','');        
 }
 function index_login_user(login_email,login_password,login_details_username,login_details_email) {
     $.ajax({
@@ -987,24 +1013,11 @@ $("body").delegate(".reply_ref","click",function(event){
     window.location.href="#" + $(this).attr('mess_ref') + "";
 });
 $("body").delegate(".logout_me","click",function(event){
-    event.preventDefault(); 
-    //username = '';
-    //localStorage.setItem("account_balance",0);//USD
-    //localStorage.setItem("bitcoin_balance",0);//BTC
-    //$(".bitcoin_balance").html(0);
-    //$(".bitcoin_balance_usd").html(0);
-    /**localStorage.setItem("account_balance",account_balance);//USD
-                    localStorage.setItem("bitcoin_balance",bitcoin_balance);//BTC
-                    $(".bitcoin_balance").html(account_balance);
-                    $(".bitcoin_balance_usd").html(account_balance); */
-    //localStorage.setItem("username", username);
+    event.preventDefault();
     user_permited = 0;
     $("#pills-account-tab").removeClass("d-none");
     localStorage.clear();
-    //alert(user_permited);
-
     onDeviceReady()
-    //loadconnects();
 });
 $("#ttab-support").click(function(){ 
     //pings.html

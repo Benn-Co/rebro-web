@@ -54,12 +54,13 @@ function onDeviceReady() {
     // Cordova is now initialized. Have fun!  
     localStorage.setItem("ccode", '$');
     localStorage.setItem("exrate", 1);
+    get_country_codes('','');  
     username = localStorage.getItem("username");
     var email = localStorage.getItem("email");
     var user_pass = localStorage.getItem("user_pass");
     if (email == null || email == '') {
         $("#pills-account-tab").removeClass("d-none");
-        localStorage.clear();
+        //localStorage.clear();
         $(".username").html(username);
         $(".username_seen").html("last seen " + new Date());
         $(".username_pic").html('<img class="avatar-img" src="./assets/img/favicon/favicon-256x256.png" alt="#">');
@@ -67,8 +68,8 @@ function onDeviceReady() {
         $(".user_email").html(localStorage.getItem("user_email"));
         $(".user_phone").html(localStorage.getItem("user_phone"));
         //localStorage.setItem("account_balance",0);//BTC
-        localStorage.setItem("ccode", '$');
-        localStorage.setItem("exrate", 1);
+        //localStorage.setItem("ccode", '$');
+        //localStorage.setItem("exrate", 1);
         var usd_account_balance = 0;
         localStorage.setItem("usd_account_balance", usd_account_balance);
 
@@ -86,7 +87,7 @@ function onDeviceReady() {
 
     } else if (user_pass == null || user_pass == '') {
         $("#pills-account-tab").removeClass("d-none");
-        localStorage.clear();
+        //localStorage.clear();
         
         $(".username").html(username);
         $(".username_seen").html("last seen " + new Date());
@@ -95,8 +96,8 @@ function onDeviceReady() {
         $(".user_email").html(localStorage.getItem("user_email"));
         $(".user_phone").html(localStorage.getItem("user_phone"));
         //localStorage.setItem("account_balance",0);//BTC
-        localStorage.setItem("ccode", '$');
-        localStorage.setItem("exrate", 1);
+        //localStorage.setItem("ccode", '$');
+        //localStorage.setItem("exrate", 1);
         var usd_account_balance = 0;
         localStorage.setItem("usd_account_balance", usd_account_balance);
 
@@ -113,7 +114,6 @@ function onDeviceReady() {
         //$(".account_balance").html(localStorage.getItem("ccode") + " " + localStorage.getItem("account_balance"));
 
     } else {      
-        get_country_codes('','');  
         $("#pills-account-tab").addClass("d-none");
         if (user_permited > 0) {
             $(".order_quantity_range").val(0);            

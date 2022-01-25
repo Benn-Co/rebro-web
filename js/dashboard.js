@@ -75,7 +75,7 @@ $("body").delegate(".mkt_option","click",function(event){
                 $(".order_quantity").addClass("is-valid");
     
                 //rebro_Aisha(localStorage.getItem("asset"),localStorage.getItem("aisa_options"),localStorage.getItem("price"),localStorage.getItem("price_open"),localStorage.getItem("day_high"),localStorage.getItem("day_low"));
-                mysnackbar(localStorage.getItem("aisa_options") + "  " + $(this).attr('asset') + " at " + localStorage.getItem("price"));
+                //mysnackbar(localStorage.getItem("aisa_options") + "  " + $(this).attr('asset') + " at " + localStorage.getItem("price"));
                 account_mkt_balance(localStorage.getItem("aisa_options"));    
     
             } else {
@@ -651,6 +651,7 @@ function bybit_mkt(crypto,asset,aisa_options) {
                         var results = response.result;
                         var potential_usd_account_balance = localStorage.getItem("account_balance");
 
+                        var tab_count_assets = 0;
                         for (let i = 0; i < results.length; i++) {
                             var results_last_price = Number(results[i].last_price)*Number(localStorage.getItem("exrate"));
                             if (results_last_price.toFixed(2) < 1) {
@@ -790,16 +791,24 @@ function bybit_mkt(crypto,asset,aisa_options) {
                                 $(".crypto_wacthlist").append(crypto_wacthlist);
 
                             } else {
+                                tab_count_assets++;
+                                $("#tab_count_assets").html(tab_count_assets);
+
                                 let highest_buy_price = results_last_price;
                                 let BTC_balance = localStorage.getItem(crypto_asset_balance);//BTC
-                                
                                 let USD_balance = (Number(BTC_balance)/1)*Number(highest_buy_price); //USD
                                 USD_balance = USD_balance.toFixed(2);
                                 
-                                var coin_value_ = localStorage.getItem("" + results[i].symbol + "_value");
+                                let coin_usd_value = localStorage.getItem("" + results[i].symbol + "_usd_value"); //USD
+                                //var coin_value_ = localStorage.getItem("" + results[i].symbol + "_value");
+
+                                var coin_value_ = Number(coin_usd_value)*Number(localStorage.getItem("exrate"));
+                                
                                 var potential_account_balance = Number(potential_usd_account_balance) - Number(coin_value_);
                                 let coin_value = Number(USD_balance) - Number(coin_value_);
                                 coin_value = coin_value.toFixed(2);
+
+                               // mysnackbar("_usd_value " + coin_usd_value + " _value " +  coin_value_);
 
                                 var the_diff = coin_value;
                                 var initial_val = coin_value_;
@@ -813,16 +822,17 @@ function bybit_mkt(crypto,asset,aisa_options) {
 
                                 var aria_valuenow = Math.abs(pert_chang);
 
-                                var mysnaccountackbar = " BTC " + BTC_balance + " " + results[i].symbol + " balance " + USD_balance + "  value added " + coin_value + " change " + pert_chang + "%";
+                                var mysnaccount_ackbar = " BTC " + BTC_balance + " " + results[i].symbol + " balance " + USD_balance + "  value added " + coin_value + " change " + pert_chang + "%";
 
 
                                 
+                                //mysnackbar("aria_valuenow " + aria_valuenow);
 
                                 var progres_dash = '<div class="progress">' +
                                 '<div class="progress-bar ' + pr_bg + '" role="progressbar" style="width: ' + aria_valuenow + '%;" aria-valuenow="' + aria_valuenow + '" aria-valuemin="0" aria-valuemax="100">' + aria_valuenow + '%</div>' + 
                                 '</div>';
 
-                                mysnaccountackbar = progres_dash;
+                                var mysnaccountackbar = progres_dash;
                                 
                                 let letpotential_usd_account_balance = Number(potential_account_balance) + Number(USD_balance);
 
@@ -909,8 +919,7 @@ var sold_bitcoins = 0;
 function account_mkt_balance(aisa_options) {
     var crypto_asset_balance = localStorage.getItem("asset");
     crypto_asset_balance = "" + crypto_asset_balance + "_balance";
-    var crypto_asset_value = localStorage.getItem("asset");
-    crypto_asset_value = "" + crypto_asset_value + "_value";
+    var crypto_asset_value = "" + localStorage.getItem("asset") + "_value";
 
     //mysnackbar("aisa_options " + aisa_options);
     if (aisa_options =="buy") {
@@ -932,6 +941,9 @@ function account_mkt_balance(aisa_options) {
                     //account_balance = Number(account_balance) - Number(order_usd_quantity);
                     //localStorage.setItem("account_balance",account_balance);//USD
                     var mkt_operation = '';
+
+                    localStorage.setItem("" + localStorage.getItem("asset") + "_usd_value",order_usd_quantity/Number(localStorage.getItem("exrate")));//USD
+
                     localStorage.setItem(crypto_asset_value,order_usd_quantity);//USD
     
                     //alert(localStorage.getItem(crypto_asset_value));
@@ -948,7 +960,7 @@ function account_mkt_balance(aisa_options) {
                     /////////////////////////////////////////////
                     localStorage.setItem(crypto_asset_balance,bitcoin_balance_fro_usd);//BTC
     
-                    mkt_operation = mkt_operation +'You bought ' + bitcoin_balance_fro_usd + ' ' + localStorage.getItem("asset") + ' worth ' + localStorage.getItem("ccode") + '' + localStorage.getItem(crypto_asset_value) + ' at ' + localStorage.getItem("ccode") + '' + localStorage.getItem("sell_price");
+                    mkt_operation = mkt_operation +'You bought ' + bitcoin_balance_fro_usd + ' ' + localStorage.getItem("asset") + ' worth ' + localStorage.getItem("ccode") + ' ' + localStorage.getItem(crypto_asset_value) + ' at ' + localStorage.getItem("ccode") + ' ' + localStorage.getItem("sell_price");
                     //mkt_operation = mkt_operation + '' ;
     
                     var is_empty = 'no';
@@ -1001,7 +1013,7 @@ function account_mkt_balance(aisa_options) {
                     var remaining_value = Number(initial_value) - Number(usd_balance_fro_btc);
                     localStorage.setItem(crypto_asset_value,remaining_value);//USD
     
-                    mkt_operation = mkt_operation +'You sold ' + order_btc_quantity + ' ' + localStorage.getItem("asset") + ' worth ' + localStorage.getItem("ccode") + '' + usd_balance_fro_btc + ' at ' + localStorage.getItem("ccode") + '' + localStorage.getItem("buy_price");
+                    mkt_operation = mkt_operation +'You sold ' + order_btc_quantity + ' ' + localStorage.getItem("asset") + ' worth ' + localStorage.getItem("ccode") + ' ' + usd_balance_fro_btc + ' at ' + localStorage.getItem("ccode") + ' ' + localStorage.getItem("buy_price");
     
                     var is_empty = 'no';
                     dsh_contact('Mo-pal' ,username,'',mkt_operation,is_empty);

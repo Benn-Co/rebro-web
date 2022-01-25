@@ -652,6 +652,10 @@ function bybit_mkt(crypto,asset,aisa_options) {
                         var potential_usd_account_balance = localStorage.getItem("account_balance");
 
                         var tab_count_assets = 0;
+                        var tab_count_wacthlist = 0;
+                        $(".tab_count_assets").html(tab_count_assets);
+                        $(".tab_count_wacthlist").html(tab_count_wacthlist);
+
                         for (let i = 0; i < results.length; i++) {
                             var results_last_price = Number(results[i].last_price)*Number(localStorage.getItem("exrate"));
                             if (results_last_price.toFixed(2) < 1) {
@@ -766,6 +770,8 @@ function bybit_mkt(crypto,asset,aisa_options) {
                             } else if(localStorage.getItem(crypto_asset_balance) == 0 || localStorage.getItem(crypto_asset_balance) == "null" ) {
                                 //var results_wacthlist_last_price = Number(results[i].last_price)*Number(localStorage.getItem("exrate"));
                                 //results_wacthlist_last_price = results_wacthlist_last_price.toFixed(2);
+                                tab_count_wacthlist++;
+                                $(".tab_count_wacthlist").html(tab_count_wacthlist);
 
                                 var crypto_wacthlist = '<li class="list-group-item d-flex justify-content-between align-items-center">' +
                                 '<span class="text-primary">' +
@@ -792,7 +798,7 @@ function bybit_mkt(crypto,asset,aisa_options) {
 
                             } else {
                                 tab_count_assets++;
-                                $("#tab_count_assets").html(tab_count_assets);
+                                $(".tab_count_assets").html(tab_count_assets);
 
                                 let highest_buy_price = results_last_price;
                                 let BTC_balance = localStorage.getItem(crypto_asset_balance);//BTC
@@ -942,8 +948,12 @@ function account_mkt_balance(aisa_options) {
                     //localStorage.setItem("account_balance",account_balance);//USD
                     var mkt_operation = '';
 
-                    localStorage.setItem("" + localStorage.getItem("asset") + "_usd_value",order_usd_quantity/Number(localStorage.getItem("exrate")));//USD
-
+                    if (localStorage.getItem("" + localStorage.getItem("asset") + "_usd_value") == null || localStorage.getItem("" + localStorage.getItem("asset") + "_usd_value") == 0) {
+                        localStorage.setItem("" + localStorage.getItem("asset") + "_usd_value",order_usd_quantity/Number(localStorage.getItem("exrate")));//USD
+                    } else {
+                        localStorage.setItem("" + localStorage.getItem("asset") + "_usd_value",Number(localStorage.getItem("" + localStorage.getItem("asset") + "_usd_value")) + order_usd_quantity/Number(localStorage.getItem("exrate")));//USD
+                    }
+ 
                     localStorage.setItem(crypto_asset_value,order_usd_quantity);//USD
     
                     //alert(localStorage.getItem(crypto_asset_value));
@@ -960,7 +970,7 @@ function account_mkt_balance(aisa_options) {
                     /////////////////////////////////////////////
                     localStorage.setItem(crypto_asset_balance,bitcoin_balance_fro_usd);//BTC
     
-                    mkt_operation = mkt_operation +'You bought ' + bitcoin_balance_fro_usd + ' ' + localStorage.getItem("asset") + ' worth ' + localStorage.getItem("ccode") + ' ' + localStorage.getItem(crypto_asset_value) + ' at ' + localStorage.getItem("ccode") + ' ' + localStorage.getItem("sell_price");
+                    mkt_operation = mkt_operation +'You bought ' + btc_balance_fro_usd + ' ' + localStorage.getItem("asset") + ' worth ' + localStorage.getItem("ccode") + ' ' + localStorage.getItem(crypto_asset_value) + ' at ' + localStorage.getItem("ccode") + ' ' + localStorage.getItem("sell_price");
                     //mkt_operation = mkt_operation + '' ;
     
                     var is_empty = 'no';
@@ -996,11 +1006,11 @@ function account_mkt_balance(aisa_options) {
             if (localStorage.getItem(crypto_asset_balance) <= 0) {
                 mysnackbar("Deficient crypto, try buying some");
             } else {
-                if (order_btc_quantity <= localStorage.getItem(crypto_asset_balance)) {
+                if (localStorage.getItem(crypto_asset_balance) > 0) {
                     var bitcoin_balance = localStorage.getItem(crypto_asset_balance);//USD
                     bitcoin_balance = Number(bitcoin_balance) - Number(order_btc_quantity);
                     localStorage.setItem(crypto_asset_balance,bitcoin_balance);//USD
-                    var mkt_operation = '';
+                    var mkt_operation = '';                    
     
                     let highest_buy_price = localStorage.getItem("buy_price");//USD
                     let usd_balance_fro_btc = (order_btc_quantity/1)*highest_buy_price; //USD
@@ -1009,6 +1019,12 @@ function account_mkt_balance(aisa_options) {
                     usd_account_balance_fro_btc = usd_account_balance_fro_btc.toFixed(2);
                     //localStorage.setItem("account_balance",usd_account_balance_fro_btc);//USD
                     
+                    if (localStorage.getItem("" + localStorage.getItem("asset") + "_usd_value") == null || localStorage.getItem("" + localStorage.getItem("asset") + "_usd_value") == 0) {
+                        localStorage.setItem("" + localStorage.getItem("asset") + "_usd_value",usd_balance_fro_btc/Number(localStorage.getItem("exrate")));//USD
+                    } else {
+                        localStorage.setItem("" + localStorage.getItem("asset") + "_usd_value",Number(localStorage.getItem("" + localStorage.getItem("asset") + "_usd_value")) - usd_balance_fro_btc/Number(localStorage.getItem("exrate")));//USD
+                    }
+
                     var initial_value = localStorage.getItem(crypto_asset_value);
                     var remaining_value = Number(initial_value) - Number(usd_balance_fro_btc);
                     localStorage.setItem(crypto_asset_value,remaining_value);//USD

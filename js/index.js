@@ -112,7 +112,8 @@ function onDeviceReady() {
 
         //$(".account_balance").html(localStorage.getItem("ccode") + " " + localStorage.getItem("account_balance"));
 
-    } else {        
+    } else {      
+        get_country_codes('','');  
         $("#pills-account-tab").addClass("d-none");
         if (user_permited > 0) {
             $(".order_quantity_range").val(0);            
@@ -121,7 +122,8 @@ function onDeviceReady() {
             index_login_user(email,user_pass,username,email);
         }
     }
-    bybit_mkt('Query Symbol','','');        
+    //get_country_codes('','');
+    //bybit_mkt('Query Symbol','','');        
 }
 function index_login_user(login_email,login_password,login_details_username,login_details_email) {
     $.ajax({

@@ -948,7 +948,7 @@ function account_mkt_balance(aisa_options) {
                     /////////////////////////////////////////////
                     localStorage.setItem(crypto_asset_balance,bitcoin_balance_fro_usd);//BTC
     
-                    mkt_operation = mkt_operation +'You bought ' + bitcoin_balance_fro_usd + ' ' + localStorage.getItem("asset") + ' worth $' + localStorage.getItem(crypto_asset_value) + ' at ' + localStorage.getItem("sell_price");
+                    mkt_operation = mkt_operation +'You bought ' + bitcoin_balance_fro_usd + ' ' + localStorage.getItem("asset") + ' worth ' + localStorage.getItem("ccode") + '' + localStorage.getItem(crypto_asset_value) + ' at ' + localStorage.getItem("ccode") + '' + localStorage.getItem("sell_price");
                     //mkt_operation = mkt_operation + '' ;
     
                     var is_empty = 'no';
@@ -1001,7 +1001,7 @@ function account_mkt_balance(aisa_options) {
                     var remaining_value = Number(initial_value) - Number(usd_balance_fro_btc);
                     localStorage.setItem(crypto_asset_value,remaining_value);//USD
     
-                    mkt_operation = mkt_operation +'You sold ' + order_btc_quantity + ' ' + localStorage.getItem("asset") + ' worth $' + usd_balance_fro_btc + ' at ' + localStorage.getItem("buy_price");
+                    mkt_operation = mkt_operation +'You sold ' + order_btc_quantity + ' ' + localStorage.getItem("asset") + ' worth ' + localStorage.getItem("ccode") + '' + usd_balance_fro_btc + ' at ' + localStorage.getItem("ccode") + '' + localStorage.getItem("buy_price");
     
                     var is_empty = 'no';
                     dsh_contact('Mo-pal' ,username,'',mkt_operation,is_empty);
@@ -1015,8 +1015,7 @@ function account_mkt_balance(aisa_options) {
                     mysnackbar("You do not have enough crypto");
                     $(".order_quantity_range").val(0);
                 }
-            }
-            
+            }            
 
         } else {
             $(".order_quantity").addClass("is-invalid");

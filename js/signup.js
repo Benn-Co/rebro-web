@@ -96,6 +96,9 @@ function signup_user(signup_username,signup_email,signup_password) {
                     localStorage.setItem("email", email);
                     localStorage.setItem("user_pass", user_pass);
 
+                    localStorage.setItem("ccode", '$');
+                    localStorage.setItem("exrate", 1);
+
                     var usd_account_balance = response.account_balance;
                     localStorage.setItem("usd_account_balance", usd_account_balance);
  

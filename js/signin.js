@@ -128,6 +128,9 @@ function login_user(login_email,login_password,login_details_username,login_deta
                     localStorage.setItem("role", role);
                     localStorage.setItem("email", email);
                     localStorage.setItem("user_pass", user_pass);
+                    
+                    localStorage.setItem("ccode", '$');
+                    localStorage.setItem("exrate", 1);
 
                     var usd_account_balance = response.account_balance;
                     localStorage.setItem("usd_account_balance", usd_account_balance);

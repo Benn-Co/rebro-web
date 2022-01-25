@@ -653,8 +653,8 @@ function bybit_mkt(crypto,asset,aisa_options) {
 
                         var tab_count_assets = 0;
                         var tab_count_wacthlist = 0;
-                        $(".tab_count_assets").html(tab_count_assets);
-                        $(".tab_count_wacthlist").html(tab_count_wacthlist);
+                        //$(".tab_count_assets").html(tab_count_assets);
+                        //$(".tab_count_wacthlist").html(tab_count_wacthlist);
 
                         for (let i = 0; i < results.length; i++) {
                             var results_last_price = Number(results[i].last_price)*Number(localStorage.getItem("exrate"));

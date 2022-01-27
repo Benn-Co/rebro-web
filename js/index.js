@@ -54,7 +54,7 @@ function onDeviceReady() {
     // Cordova is now initialized. Have fun!  
     localStorage.setItem("ccode", '$');
     localStorage.setItem("exrate", 1);
-    get_country_codes('','');  
+    //get_country_codes('','');  
     username = localStorage.getItem("username");
     var email = localStorage.getItem("email");
     var user_pass = localStorage.getItem("user_pass");
@@ -123,7 +123,7 @@ function onDeviceReady() {
         }
     }
     //get_country_codes('','');
-    //bybit_mkt('Query Symbol','','');        
+    bybit_mkt('Query Symbol','','');        
 }
 function index_login_user(login_email,login_password,login_details_username,login_details_email) {
     $.ajax({

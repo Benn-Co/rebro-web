@@ -1,7 +1,7 @@
 let lo = '';
 let la = '';
 var api_server_url = localStorage.getItem("api_server_url");
-//get_country_codes(lo,la);
+get_country_codes(lo,la);
 function get_country_codes(lo,la) {
   $.ajax({
     type: "POST", // Type of request to be send, called as 
@@ -49,7 +49,7 @@ function get_country_codes(lo,la) {
              var country = '<li><a class="dropdown-item active country_option" cname="' + countries[i].cname + '" mcode="' + countries[i].mcode + '" exchange_rate="' + countries[i].exrate + '" ccode="' + countries[i].ccode + '" currency_name="' + countries[i].ccode + '" country_name="' + countries[i].name + '" href="#">' + countries[i].name + '</a></li>' +
                            '<li><hr class="dropdown-divider"></li>';
                            $(".country_list").append(country);
-             bybit_mkt('Query Symbol','','');           
+             //bybit_mkt('Query Symbol','','');           
            }else{
              var curre = '<li><a class="dropdown-item currency_option" cname="' + countries[i].cname + '" mcode="' + countries[i].mcode + '" exchange_rate="' + countries[i].exrate + '" ccode="' + countries[i].ccode + '" currency_name="' + countries[i].ccode + '" country_name="' + countries[i].name + '" href="#">' + countries[i].cname + '</a></li>' +
                          '<li><hr class="dropdown-divider"></li>';

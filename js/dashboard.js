@@ -449,7 +449,7 @@ function send_gift_email(gift_email,username) {
         }
     });
 }
-//bybit_mkt('Query Symbol','','');
+bybit_mkt('Query Symbol','','');
 function bybit_mkt(crypto,asset,aisa_options) {
     $.ajax({
         type: "POST", // Type of request to be send, called as 

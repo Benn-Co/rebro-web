@@ -2323,6 +2323,7 @@
                     <div id="mkt_dash" class="container h-100">    
                         <div class="d-flex flex-column h-100 position-relative">
                             <!-- Chat: Header -->
+                            
                             <div class="chat-header border-bottom py-0 py-lg-1">
                                 <div class="row align-items-center">
                                     <ul class="nav nav-pills nav-fill d-flex justify-content-between align-items-center" role="tablist">
@@ -2378,17 +2379,16 @@
                                             </ul>                                            
                                         </li>-->
                                         <li class="nav-item float-right" role="presentation" style="float: right;">
-                                            <div class="btn-group" role="group" aria-label="Basic example">
-                                                <button class="nav-link active pills-home-tab current_crypto_symbol" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Order Book</button>
-                                                <button class="nav-link active pills-assets-tab d-none" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Assets</button>
-                                            </div>
+                                            <button class="nav-link active pills-home-tab current_crypto_symbol dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Offers</button>
+                                            <ul class="dropdown-menu hide-scrollbar flex-1 h-3 leanders_mkt_assets" style="height: 500px; width: 100%;">
+                                                      
+                                            </ul>
+                                            
                                         </li>
                                     </ul>
                                 </div>
                                 
-                                <div class="row align-items-center asset_info">
-                                    
-                                </div>
+                                
 
 
                             </div>                            
@@ -2399,37 +2399,11 @@
                                 <div class="chat-body-inner">
                                     
 
-                                    <div class="card mb-3">
-                                        <div class="card-body">
-                                            <h4 class="header-title cur_crypto_symbol"></h4>
-                                            <div class="me-auto mb-3">
-                                                <div class="row gx-3">                                                        
-                                                    <div class="col">
-                                                        <a class="btn btn-sm btn-soft-primary w-100 nav-link dropdown-toggle select_currency" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">USD</a>
-                                                            <ul class="dropdown-menu hide-scrollbar flex-1 h-3 currency_list" style="height: 250px;">
-                                                            </ul>
-                                                    </div>
-                                                    <div class="col">
-                                                        <a class="btn btn-sm btn-soft-primary w-100 nav-link dropdown-toggle select_country" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">United States</a>
-                                                            <ul class="dropdown-menu hide-scrollbar flex-1 h-3 country_list" style="height: 250px;">
-                                                            </ul>
-                                                    </div>
-                                                    <div class="col">
-                                                        <a class="btn btn-sm btn-primary w-100 nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Offers</a>
-                                                            <ul class="dropdown-menu hide-scrollbar flex-1 h-3 crypto_offers_drop" style="height: 250px;">
-                                                              <li><a class="dropdown-item active" href="#">Offers</a></li>
-                                                              <li><hr class="dropdown-divider"></li>
-                                                              <li><a class="dropdown-item active" href="#">Bank transfer</a></li>
-                                                              <li><hr class="dropdown-divider"></li>
-                                                              <li><a class="dropdown-item" href="#">Paypal</a></li>
-                                                              <li><hr class="dropdown-divider"></li>
-                                                              <li><a class="dropdown-item" href="#">Visa/Credit Card</a></li>
-                                                              <li><hr class="dropdown-divider"></li>
-                                                              <li><a class="dropdown-item" href="#">Western union</a></li>
-                                                            </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                    <div id="leanders_mkt_c"  class="card mb-3">
+                                        <div class="asset_info">
+                                    
+                                        </div>
+                                        <div class="card-body">                                            
                                             <div dir="ltr">
                                                 <div id="simple-candlestick" class="apex-charts" data-colors="#42d29d,#fa6767"></div>
                                             </div>
@@ -2563,7 +2537,7 @@
                                         
     
                                     </div>
-                                    <div id="leanders_mkt" class="py-1">                                        
+                                    <div id="leanders_mkt" class="py-1 d-none">                                        
                                         <div class="row g-0 leanders_mkt_assets">
 
                                         </div>                                        
@@ -2572,18 +2546,24 @@
                             </div>
                             <!-- Chat: Content -->
                             
-                            <footer class="footer mt-auto py-2 bg-light">
-                                <div class="container">
-                                  <span class="text-muted">                                    
-                                    <a class="py-0 py-lg-8 px-6" href="#Legal_Privacy" title="Legal & Privacy">
-                                        <span class="me-auto">
-                                            Legal & Privacy
-                                        </span>                            
-                                    </a>
-                                    <span class="me-auto">
-                                        © 2022 Rebro
-                                    </span> 
+                            <footer class="footer">
+                                <div class="container d-flex justify-content-between align-items-center mb-3">
+                                  <span class="me-auto">
+                                    © 2022 Rebro
                                   </span>
+
+                                  <span class="text-muted me-auto">
+                                    <a class="me-auto" href="#Legal_Privacy" title="Legal & Privacy">
+                                        Legal & Privacy                            
+                                    </a>                                    
+                                  </span>
+
+                                  <span class="dropdown-toggle select_currency me-auto" data-bs-toggle="dropdown" role="button" aria-expanded="false"></span>
+                                  <ul class="dropdown-menu hide-scrollbar flex-1 h-3 currency_list" style="height: 250px;">
+                                  </ul> 
+                                  <span class="dropdown-toggle select_country me-auto" data-bs-toggle="dropdown" role="button" aria-expanded="false"></span>
+                                  <ul class="dropdown-menu hide-scrollbar flex-1 h-3 country_list" style="height: 250px;">
+                                  </ul>
                                 </div>
                             </footer>
                         </div>                        
